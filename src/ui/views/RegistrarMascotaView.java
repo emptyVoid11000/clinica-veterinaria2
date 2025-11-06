@@ -1,8 +1,8 @@
 package ui.views;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class RegistrarMascotaView extends JFrame {
 
@@ -89,6 +89,8 @@ public class RegistrarMascotaView extends JFrame {
         add(new JLabel());
         btnAnadir = new JButton("Añadir Mascota");
         add(btnAnadir);
+
+        
     }
 
     public String getNombre() { return txtNombre.getText(); }
@@ -109,6 +111,14 @@ public class RegistrarMascotaView extends JFrame {
         txtAlergias.setEnabled(true);
     }
 
+    public void deshabilitarCampoTextoVacunas() {
+        txtVacuna.setEnabled(false);
+    }
+
+    public void deshabilitarCampoTextoAlergias() {
+        txtAlergias.setEnabled(false);
+    }
+
     public void addListenerAddBtn(ActionListener listener) {
         btnAnadir.addActionListener(listener);
     }
@@ -119,6 +129,19 @@ public class RegistrarMascotaView extends JFrame {
 
     public void addListenerYesAleBtn(ActionListener listener) {
         radioButtonYesAlergias.addActionListener(listener);
+    }
+
+    public void addListenerNoVacBtn(ActionListener listener) {
+        radioButtonNoVacunas.addActionListener(listener);
+    }
+
+    public void addListenerNoAleBtn(ActionListener listener) {
+        radioButtonNoAlergias.addActionListener(listener);
+    }
+
+    public void actualizar(){
+        setTitle("Editar Mascota");
+        btnAnadir.setText("Guardar Cambios");
     }
 
     public void mostrarMensaje(String mensaje) {

@@ -1,17 +1,15 @@
 package ui.controllers;
 
 import javax.swing.JOptionPane;
+import model.Rol;
 import model.Usuario;
-import services.UsuarioService;
-import ui.views.FormularioUserView;
-import ui.views.GestionUsuariosView;
-import ui.views.MainView;
-import util.SessionManager;
-import ui.views.RegistrarMascotaView;
-import services.MascotaService;
 import repositories.JsonMascotaRepository;
-import ui.controllers.RegistrarMascotaController;
-import model.Mascota;
+import repositories.MascotaRepository;
+import services.MascotaService;
+import services.UsuarioService;
+import ui.views.*;
+import util.SessionManager;
+;
 
 public class MainController {
     private final MainView mainView;
@@ -19,7 +17,7 @@ public class MainController {
     private final FormularioUserView addUserView;
     private final RegistrarMascotaView registrarMascotaView;
     
-    public MainController(MainView mainView, UsuarioService usuarioService, FormularioUserView addUserView, RegistrarMascotaView registrarMascotaView ) {
+    public MainController(MainView mainView, UsuarioService usuarioService, FormularioUserView addUserView, RegistrarMascotaView registrarMascotaView) {
         this.mainView = mainView;
         this.usuarioService = usuarioService;
         this.addUserView = addUserView;
@@ -28,7 +26,8 @@ public class MainController {
         this.mainView.addGestionUsuariosListener(e -> abrirGestionUsuarios());
         this.mainView.addCerrarSesionListener(e -> cerrarSesion());
         this.mainView.addReestablecerContrasenaListener(e -> reestablecerContrasena());
-        this.mainView.addMenuItemRegistrarMascota(e-> registrarMascota());
+        this.mainView.addMenuItemRegistrarMascota(e -> registrarMascota());
+        this.mainView.addMenuItemBusquedaMascota(e -> buscarMascota());
     }
 
     public void iniciar() {
@@ -41,24 +40,54 @@ public class MainController {
         gestionController.iniciar();
     }
 
-    private void reestablecerContrasena(){
+    private void reestablecerContrasena() {
         Usuario usuario = SessionManager.getUsuarioActual();
-        MainView view = new MainView();
-        String nuevaContrasena = JOptionPane.showInputDialog(view, "Nueva contrasena:", "Reestablecer Contraseña", JOptionPane.PLAIN_MESSAGE);
+        String nuevaContrasena = JOptionPane.showInputDialog(mainView, "Nueva contraseña:", "Reestablecer Contraseña", JOptionPane.PLAIN_MESSAGE);
 
-        usuarioService.restablecerContrasena(usuario.getCorreo(), nuevaContrasena);
+        if (nuevaContrasena != null && !nuevaContrasena.isEmpty()) {
+            usuarioService.restablecerContrasena(usuario.getCorreo(), nuevaContrasena);
+            JOptionPane.showMessageDialog(mainView, "Contraseña actualizada con éxito.");
+        }
     }
 
-    private void registrarMascota(){
-        System.out.println("Tilina");
+    private void registrarMascota() {
         MascotaService mascotaService = new MascotaService(new JsonMascotaRepository());
-        RegistrarMascotaController controller = new RegistrarMascotaController(new RegistrarMascotaView(), mascotaService);
+        RegistrarMascotaController controller = new RegistrarMascotaController(new RegistrarMascotaView(), mascotaService, null, null);
         controller.iniciar();
     }
 
+    private void buscarMascota() {
+        MascotaRepository mascotaRepository = new JsonMascotaRepository();
+        MascotaService mascotaService = new MascotaService(mascotaRepository);
+
+        if (SessionManager.getUsuarioActual().getRol() != Rol.AUXILIAR) {
+            MenuBusquedaView menuBusquedaView = new MenuBusquedaView();
+            RegistrarMascotaView registrarMascotaView = new RegistrarMascotaView();
+
+            GestionMascotasView gestionMascotasView = new GestionMascotasView();
+
+            GestionMascotasController gestionMascotasController= new GestionMascotasController(gestionMascotasView, mascotaService, SessionManager);
+
+            RegistrarMascotaController registrarMascotaController = new RegistrarMascotaController(registrarMascotaView, mascotaService, null, gestionMascotasController);
+
+            
+
+            MenuBusquedaController controller = new MenuBusquedaController(usuarioService, menuBusquedaView, mascotaService, registrarMascotaController);
+            controller.iniciar();
+
+        } else {
+            GestionMascotasView gestionMascotasView = new GestionMascotasView();
+            GestionMascotasController controller = new GestionMascotasController(
+                gestionMascotasView,
+                mascotaService,
+                SessionManager.getUsuarioActual().getId()
+            );
+            controller.iniciar();
+        }
+    }
+
     private void cerrarSesion() {
-        
         mainView.dispose();
-        System.exit(0); 
+        System.exit(0);
     }
 }

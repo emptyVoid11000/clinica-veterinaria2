@@ -10,6 +10,7 @@ public class MainView extends JFrame {
     private JMenuItem menuItemReestablecerContrasena;
     //Dueño
     private JMenuItem menuItemRegistrarMascota;
+    private JMenuItem menuItemBusquedaMascota;
 
     public MainView() {
         setTitle("Sistema de Gestión - Clínica Veterinaria");
@@ -33,7 +34,10 @@ public class MainView extends JFrame {
         menuSistema.add(menuItemReestablecerContrasena);
 
         menuItemRegistrarMascota = new JMenuItem("Registrar Mascota");
-        menuSistema.add("Registrar Mascota");
+        menuSistema.add(menuItemRegistrarMascota);
+
+        menuItemBusquedaMascota = new JMenuItem("Buscar/actualizar Mascota");
+        menuSistema.add(menuItemBusquedaMascota);
 
         menuBar.add(menuSistema);
         menuBar.add(menuAdmin);
@@ -48,12 +52,12 @@ public class MainView extends JFrame {
         switch (rol) {
             case ADMINISTRADOR:
                 menuItemRegistrarMascota.setVisible(false);
-
+                menuItemBusquedaMascota.setVisible(false);
                 break;
 
             case MEDICO:
                 menuItemRegistrarMascota.setVisible(false);
-
+                menuItemBusquedaMascota.setVisible(false);
                 getJMenuBar().getMenu(1).setVisible(false);
                 break;
 
@@ -82,5 +86,9 @@ public class MainView extends JFrame {
 
     public void addMenuItemRegistrarMascota(ActionListener listener) {
         menuItemRegistrarMascota.addActionListener(listener);
+    }
+
+    public void addMenuItemBusquedaMascota(ActionListener listener) {
+        menuItemBusquedaMascota.addActionListener(listener);
     }
 }

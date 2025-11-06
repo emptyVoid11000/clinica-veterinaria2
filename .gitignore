@@ -1,0 +1,6 @@
+# Ignorar configuraciones del editor
+.vscode/
+
+.Extensions
+
+.md

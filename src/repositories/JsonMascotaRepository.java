@@ -85,9 +85,18 @@ public class JsonMascotaRepository implements MascotaRepository {
     }
 
     @Override
-    public List<Mascota> listarMascotas(Usuario dueno) {
+    public List<Mascota> listarMascotas(UUID duenoId) {
         return mascotas.stream()
-                .filter(u -> u.getDuenoId().equals(dueno.getId()))
+                .filter(u -> u.getDuenoId().equals(duenoId))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Mascota buscarMascotaPorId(UUID id) {
+        return mascotas.stream()
+            .filter(u -> u.getId().equals(id))
+            .findFirst()
+            .orElse(null);}
+
+
 }

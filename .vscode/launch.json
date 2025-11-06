@@ -9,6 +9,13 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "app.Main",
+            "projectName": "clinica-veterinaria2_3473c29b"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "app.Main",
             "projectName": "clinica-veterinaria2_45ac59ac"
         },
         {

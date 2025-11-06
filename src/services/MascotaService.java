@@ -2,7 +2,6 @@ package services;
 
 import java.util.List;
 import java.util.UUID;
-
 import model.Mascota;
 import model.Usuario;
 import repositories.MascotaRepository;
@@ -11,7 +10,7 @@ public class MascotaService {
     private final MascotaRepository mascotaRepository;
 
     public MascotaService(MascotaRepository mascotaRespository){
-        this.mascotaRepository = mascotaRepository;
+        this.mascotaRepository = mascotaRespository;
     }
 
     public void crearMascota( UUID duenoId,
@@ -45,7 +44,11 @@ public class MascotaService {
         return mascotaRepository.buscarMascotaPorNombre(nombre);
     }
 
-    public List<Mascota> listarMascotasDeUnDueno(Usuario dueno){
-        return mascotaRepository.listarMascotas(dueno);
+    public List<Mascota> listarMascotasDeUnDueno(UUID duenoId){
+        return mascotaRepository.listarMascotas(duenoId);
+    }
+
+    public Mascota buscarMascotaPorId(UUID id){
+        return mascotaRepository.buscarMascotaPorId(id);
     }
 }
