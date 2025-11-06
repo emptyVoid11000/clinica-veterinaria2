@@ -7,6 +7,7 @@ import ui.views.GestionUsuariosView;
 import ui.views.LoginView;
 import ui.views.MainView;
 import util.SessionManager;
+import ui.views.RegistrarMascotaView;
 
 public class LoginController {
     private final LoginView loginView;
@@ -33,7 +34,8 @@ public class LoginController {
             FormularioUserView addUserView = new FormularioUserView();
             mainView.configurarParaRol(SessionManager.getUsuarioActual().getRol());
             
-            MainController mainController = new MainController(mainView, usuarioService, addUserView);
+            RegistrarMascotaView registrarMascotaView = new RegistrarMascotaView();
+            MainController mainController = new MainController(mainView, usuarioService, addUserView, registrarMascotaView);
             mainController.iniciar();
             
         } else {

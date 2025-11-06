@@ -7,22 +7,28 @@ import ui.views.FormularioUserView;
 import ui.views.GestionUsuariosView;
 import ui.views.MainView;
 import util.SessionManager;
+import ui.views.RegistrarMascotaView;
+import services.MascotaService;
+import repositories.JsonMascotaRepository;
+import ui.controllers.RegistrarMascotaController;
+import model.Mascota;
 
 public class MainController {
     private final MainView mainView;
     private final UsuarioService usuarioService;
     private final FormularioUserView addUserView;
+    private final RegistrarMascotaView registrarMascotaView;
     
-
-    public MainController(MainView mainView, UsuarioService usuarioService, FormularioUserView addUserView) {
+    public MainController(MainView mainView, UsuarioService usuarioService, FormularioUserView addUserView, RegistrarMascotaView registrarMascotaView ) {
         this.mainView = mainView;
         this.usuarioService = usuarioService;
         this.addUserView = addUserView;
-
+        this.registrarMascotaView = registrarMascotaView;
         
         this.mainView.addGestionUsuariosListener(e -> abrirGestionUsuarios());
         this.mainView.addCerrarSesionListener(e -> cerrarSesion());
         this.mainView.addReestablecerContrasenaListener(e -> reestablecerContrasena());
+        this.mainView.addMenuItemRegistrarMascota(e-> registrarMascota());
     }
 
     public void iniciar() {
@@ -41,6 +47,13 @@ public class MainController {
         String nuevaContrasena = JOptionPane.showInputDialog(view, "Nueva contrasena:", "Reestablecer Contraseña", JOptionPane.PLAIN_MESSAGE);
 
         usuarioService.restablecerContrasena(usuario.getCorreo(), nuevaContrasena);
+    }
+
+    private void registrarMascota(){
+        System.out.println("Tilina");
+        MascotaService mascotaService = new MascotaService(new JsonMascotaRepository());
+        RegistrarMascotaController controller = new RegistrarMascotaController(new RegistrarMascotaView(), mascotaService);
+        controller.iniciar();
     }
 
     private void cerrarSesion() {

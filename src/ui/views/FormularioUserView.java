@@ -81,6 +81,7 @@ public class FormularioUserView extends JFrame{
     }
 
 
+
     public void addListener(ActionListener listener) {
         btnAnadir.addActionListener(listener);
     }

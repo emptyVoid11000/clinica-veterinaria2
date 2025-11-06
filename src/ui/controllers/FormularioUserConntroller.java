@@ -6,6 +6,7 @@ import model.Usuario;
 import services.UsuarioService;
 import ui.views.FormularioUserView;
 import ui.views.MainView;
+import ui.views.RegistrarMascotaView;
 import util.SessionManager;
 
 public class FormularioUserConntroller{
@@ -34,8 +35,9 @@ public class FormularioUserConntroller{
             if (nombre != null && contrasena != null && rolSeleccionado != null) {
                 MainView mainView = new MainView();
                 if(SessionManager.getUsuarioActual()==null){
-                    MainController mainController = new MainController(mainView, usuarioService, addUserView);
-                    mainController.iniciar();
+
+                RegistrarMascotaView registrarMascotaView = new RegistrarMascotaView();
+                MainController mainController = new MainController(mainView, usuarioService, addUserView, registrarMascotaView);           mainController.iniciar();
                 }
                 
                 usuarioService.crearUsuario(UUID.randomUUID(), nombre, correo, contrasena, rolSeleccionado);
@@ -68,4 +70,6 @@ public class FormularioUserConntroller{
         public void iniciar() {
             addUserView.setVisible(true);
         }
+
+        
 }

@@ -1,5 +1,4 @@
 package app;
-
 import javax.swing.SwingUtilities;
 import repositories.JsonUsuarioRepository; 
 import repositories.UsuarioRepository;
