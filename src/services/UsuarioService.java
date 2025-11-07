@@ -76,4 +76,11 @@ public class UsuarioService {
     public List<Usuario> listarUsuarios() {
         return usuarioRepository.listarTodos();
     }
+
+    public List<Usuario> buscarPorNombre(String nombre){
+        return usuarioRepository.buscarPorNombre(nombre);
+    }
+    public List<Usuario> buscarPorCorreoVarios(String correo){
+        return  usuarioRepository.buscarPorCorreoVarios(correo);
+    }
 }

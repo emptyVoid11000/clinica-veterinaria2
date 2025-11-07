@@ -3,7 +3,6 @@ package services;
 import java.util.List;
 import java.util.UUID;
 import model.Mascota;
-import model.Usuario;
 import repositories.MascotaRepository;
 
 public class MascotaService {
@@ -51,4 +50,7 @@ public class MascotaService {
     public Mascota buscarMascotaPorId(UUID id){
         return mascotaRepository.buscarMascotaPorId(id);
     }
+    
+
+
 }

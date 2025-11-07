@@ -1,5 +1,6 @@
 package ui.views;
 
+import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.Rol;
@@ -11,12 +12,17 @@ public class MainView extends JFrame {
     //Dueño
     private JMenuItem menuItemRegistrarMascota;
     private JMenuItem menuItemBusquedaMascota;
+    private JLabel saludo;
 
     public MainView() {
         setTitle("Sistema de Gestión - Clínica Veterinaria");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
+        saludo = new JLabel("", SwingConstants.CENTER);
+        saludo.setFont(new Font("Arial", Font.BOLD, 24)); 
+        add(saludo, BorderLayout.CENTER);
 
         
         JMenuBar menuBar = new JMenuBar();
@@ -57,7 +63,7 @@ public class MainView extends JFrame {
 
             case MEDICO:
                 menuItemRegistrarMascota.setVisible(false);
-                menuItemBusquedaMascota.setVisible(false);
+                menuItemBusquedaMascota.setVisible(true);
                 getJMenuBar().getMenu(1).setVisible(false);
                 break;
 
@@ -70,6 +76,9 @@ public class MainView extends JFrame {
                 JOptionPane.showMessageDialog(this, "Error: Rol no reconocido");
                 break;
         }
+    }
+    public void cambiarNombre(String nombre) {
+        saludo.setText("¡Hola, " + nombre + "!");
     }
 
     public void addCerrarSesionListener(ActionListener listener) {

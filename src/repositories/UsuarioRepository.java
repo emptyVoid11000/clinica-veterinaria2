@@ -10,4 +10,6 @@ public interface UsuarioRepository {
     Usuario buscarPorId(UUID id);
     Usuario buscarPorCorreo(String correo);
     List<Usuario> listarTodos();
+    List<Usuario> buscarPorNombre(String nombre);
+    List<Usuario> buscarPorCorreoVarios(String correo);
 }

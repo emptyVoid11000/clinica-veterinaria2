@@ -1,0 +1,50 @@
+[
+  {
+    "nombre": "k",
+    "id": "5093c71f-c679-4823-9630-419e47bd70ea",
+    "duenoId": "520bff82-41bd-447b-899d-170bd5e1e7d1",
+    "especie": "k",
+    "raza": "k",
+    "sexo": "HEMBRA",
+    "edad": 7,
+    "peso": 7.0,
+    "vacunas": "jkjkj",
+    "alergias": "kjkjkkjk"
+  },
+  {
+    "nombre": "o",
+    "id": "244202a6-e492-43ad-85fc-657b48df1d2c",
+    "duenoId": "c90c738a-bef6-4c3a-b55d-c07fe6a2f027",
+    "especie": "o",
+    "raza": "o",
+    "sexo": "HEMBRA",
+    "edad": 8,
+    "peso": 8.0,
+    "vacunas": "88",
+    "alergias": "8888"
+  },
+  {
+    "nombre": "o",
+    "id": "fc2e97d6-42f4-454a-b752-17a2081d6e1a",
+    "duenoId": "45b3cf6d-e498-4899-ab4c-aed33e388c9e",
+    "especie": "o",
+    "raza": "o",
+    "sexo": "HEMBRA",
+    "edad": 8,
+    "peso": 8.0,
+    "vacunas": "fsdfs",
+    "alergias": "fsfsfs"
+  },
+  {
+    "nombre": "f",
+    "id": "0911dd97-5788-4c9b-806b-d37cbc6e15e8",
+    "duenoId": "45b3cf6d-e498-4899-ab4c-aed33e388c9e",
+    "especie": "f",
+    "raza": "f",
+    "sexo": "HEMBRA",
+    "edad": 1,
+    "peso": 1.0,
+    "vacunas": "f",
+    "alergias": "f"
+  }
+]

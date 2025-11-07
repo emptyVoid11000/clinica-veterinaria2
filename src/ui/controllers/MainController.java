@@ -28,6 +28,7 @@ public class MainController {
         this.mainView.addReestablecerContrasenaListener(e -> reestablecerContrasena());
         this.mainView.addMenuItemRegistrarMascota(e -> registrarMascota());
         this.mainView.addMenuItemBusquedaMascota(e -> buscarMascota());
+        this.saludo();
     }
 
     public void iniciar() {
@@ -66,11 +67,10 @@ public class MainController {
 
             GestionMascotasView gestionMascotasView = new GestionMascotasView();
 
-            GestionMascotasController gestionMascotasController= new GestionMascotasController(gestionMascotasView, mascotaService, SessionManager);
+            GestionMascotasController gestionMascotasController= new GestionMascotasController(gestionMascotasView, mascotaService, null);
 
             RegistrarMascotaController registrarMascotaController = new RegistrarMascotaController(registrarMascotaView, mascotaService, null, gestionMascotasController);
 
-            
 
             MenuBusquedaController controller = new MenuBusquedaController(usuarioService, menuBusquedaView, mascotaService, registrarMascotaController);
             controller.iniciar();
@@ -84,6 +84,10 @@ public class MainController {
             );
             controller.iniciar();
         }
+    }
+
+    private void saludo(){
+        mainView.cambiarNombre(SessionManager.getUsuarioActual().getNombre());
     }
 
     private void cerrarSesion() {

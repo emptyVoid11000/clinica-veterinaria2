@@ -3,6 +3,8 @@ package repositories;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+
+import model.Mascota;
 import model.Rol;
 import model.Usuario;
 import util.PasswordUtil;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class JsonUsuarioRepository implements UsuarioRepository {
 
@@ -92,12 +95,28 @@ public class JsonUsuarioRepository implements UsuarioRepository {
             .orElse(null);
     }
 
+    
+@Override
+public List<Usuario> buscarPorNombre(String nombre) {
+    return usuarios.stream()
+        .filter(u -> u.getNombre().toLowerCase().contains(nombre))
+        .collect(Collectors.toList());
+}
+
+
     @Override
     public Usuario buscarPorCorreo(String correo) {
         return usuarios.stream()
             .filter(u -> u.getCorreo().equals(correo))
             .findFirst()
             .orElse(null);
+    }
+
+    @Override
+    public List<Usuario> buscarPorCorreoVarios(String correo) {
+        return usuarios.stream()
+        .filter(u -> u.getCorreo().toLowerCase().contains(correo))
+        .collect(Collectors.toList());
     }
 
     @Override

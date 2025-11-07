@@ -9,12 +9,15 @@ import services.UsuarioService;
 import ui.views.MenuBusquedaView;
 import services.MascotaService;
 import ui.views.GestionMascotasView;
+import java.util.List;
+import model.Rol;
 
 public class MenuBusquedaController {
     private final UsuarioService usuarioService;
     private final MenuBusquedaView mainView;
     private final MascotaService mascotaService;
     private final RegistrarMascotaController registrarMascotaController;
+    private Usuario usuarioSelec;
 
     public MenuBusquedaController(
             UsuarioService usuarioService,
@@ -35,19 +38,22 @@ public class MenuBusquedaController {
 
     public void cargarUsuarios() {
         String correo = mainView.getCorreo().trim();
-        if (correo.isEmpty()) {
-            mainView.mostrarMensaje("Pon un correo primero");
+        if (correo==null) {
+            mainView.mostrarMensaje("Pon un nombre primero");
             return;
         }
 
-        Usuario usuario = usuarioService.buscarUsuarioPorCorreo(correo);
+        List<Usuario> usuarios = usuarioService.buscarPorCorreoVarios(correo);
+
         DefaultListModel<String> modelo = mainView.getModeloLista();
         modelo.clear();
 
-        if (usuario == null) {
+        if (usuarios.isEmpty()) {
             mainView.mostrarMensaje("Usuario no encontrado");
         } else {
-            modelo.addElement(usuario.getCorreo());
+            for(Usuario u:usuarios){
+                if(u.getRol()==Rol.AUXILIAR){modelo.addElement(u.getCorreo());}
+            }
         }
 
         mainView.recargar();
@@ -70,17 +76,19 @@ public class MenuBusquedaController {
     private void cargarMascotas(String correo) {
         mainView.setVisible(false);
         Usuario usuario = usuarioService.buscarUsuarioPorCorreo(correo);
-
         if (usuario == null) {
             mainView.mostrarMensaje("No se pudo cargar el usuario.");
             mainView.setVisible(true);
             return;
         }
+        //usuarioSelec= new Usuario(usuario.getId(), usuario.getNombre(), usuario.getCorreo(), usuario.getPasswordHash(), usuario.getSalt(), usuario.getRol());
+
+
 
 
         GestionMascotasView view = new GestionMascotasView();
         GestionMascotasController gestionMascotasController =
-                new GestionMascotasController(view, mascotaService, registrarMascotaController, usuario.getId());
+                new GestionMascotasController(view, mascotaService, usuario.getId());
 
         gestionMascotasController.iniciar();
     }

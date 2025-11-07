@@ -1,0 +1,74 @@
+[
+  {
+    "id": "bbd7d99b-bc26-4d9c-b83e-b56f396d8f3a",
+    "nombre": "Administrador",
+    "correo": "admin@gmail.com",
+    "passwordHash": "SkgDATbrr2qtL7y26o/J5lf+PpSci2gnsjCjYVMGDK0\u003d",
+    "salt": "VeefkoYbhqY9Zje0XP+alQ\u003d\u003d",
+    "rol": "ADMINISTRADOR",
+    "activo": true
+  },
+  {
+    "id": "520bff82-41bd-447b-899d-170bd5e1e7d1",
+    "nombre": "j",
+    "correo": "j",
+    "passwordHash": "1VaophVawu09j3FZYD3l+OMQ7pjbxXUXfryR6PwWRIw\u003d",
+    "salt": "5U5JN/fWbfe7pS3J45aJQw\u003d\u003d",
+    "rol": "AUXILIAR",
+    "activo": true
+  },
+  {
+    "id": "1d770f72-a0cd-4f37-ba0c-857858125698",
+    "nombre": "g",
+    "correo": "g",
+    "passwordHash": "39tWTWOE/cV7SOV7W5BMFbNE8hEPv/H3QwJc4wNM8qo\u003d",
+    "salt": "MVgzDlkh73iq1EylkNDp/A\u003d\u003d",
+    "rol": "MEDICO",
+    "activo": true
+  },
+  {
+    "id": "bb82878a-7b9c-41aa-9d68-de807fbf67e5",
+    "nombre": "Andres",
+    "correo": "asas",
+    "passwordHash": "SUwE+ivNqZ1hXscPNUne8fxeD0m6orZ4YgJSUAT7Nxs\u003d",
+    "salt": "/5O9phGBH9Wdy0Qq1XBzMA\u003d\u003d",
+    "rol": "AUXILIAR",
+    "activo": true
+  },
+  {
+    "id": "d4ad8581-8c75-45bd-99e8-be93f13d8df7",
+    "nombre": "andrea",
+    "correo": "asasfd",
+    "passwordHash": "lmTvCwGFUtH94VpjDpTtVJj1jtIOD/emDn96DapnQHA\u003d",
+    "salt": "l4JSkH7G4KEDDdDwDoX1kA\u003d\u003d",
+    "rol": "MEDICO",
+    "activo": true
+  },
+  {
+    "id": "b4319639-5033-4aae-a875-51bd31cd96c5",
+    "nombre": "andrea",
+    "correo": "ссс",
+    "passwordHash": "yzsJ+dNk7pHCU51Lm2km7xcDHB/KpGapSd5f+iJp93M\u003d",
+    "salt": "G4xnpBkRAHBszlMGsmj65w\u003d\u003d",
+    "rol": "AUXILIAR",
+    "activo": true
+  },
+  {
+    "id": "c90c738a-bef6-4c3a-b55d-c07fe6a2f027",
+    "nombre": "andres",
+    "correo": "k",
+    "passwordHash": "sDybOZdN66rhtGPf5Jh6DyZCVqhlq1hIVQd9OuSLKXg\u003d",
+    "salt": "Qh9DBFwkfOJGt7sqg466ww\u003d\u003d",
+    "rol": "AUXILIAR",
+    "activo": true
+  },
+  {
+    "id": "45b3cf6d-e498-4899-ab4c-aed33e388c9e",
+    "nombre": "pedro",
+    "correo": "d",
+    "passwordHash": "ASZ5bQhmQXNdlvdbV30GmWXBRdEHgnMaI6zdGSS4EVU\u003d",
+    "salt": "GQtSsO9o1Kl0oBhRLEHiqQ\u003d\u003d",
+    "rol": "AUXILIAR",
+    "activo": true
+  }
+]
